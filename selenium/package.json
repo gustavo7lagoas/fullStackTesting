@@ -1,0 +1,30 @@
+{
+  "name": "selenium-js-fst",
+  "version": "1.0.0",
+  "description": "Selenium project for the full stack testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "node googleSearch.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavo7lagoas/fullStackTesting.git"
+  },
+  "keywords": [
+    "test",
+    "selenium",
+    "full",
+    "stack"
+  ],
+  "author": "gustavo7lagoas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gustavo7lagoas/fullStackTesting/issues"
+  },
+  "homepage": "https://github.com/gustavo7lagoas/fullStackTesting#readme",
+  "dependencies": {
+    "chai": "^5.0.0",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.16.0"
+  }
+}
