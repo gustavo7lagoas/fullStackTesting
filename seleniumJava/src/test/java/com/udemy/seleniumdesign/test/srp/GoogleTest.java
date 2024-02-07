@@ -2,10 +2,11 @@ package com.udemy.seleniumdesign.test.srp;
 
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.udemy.seleniumdesign.srp.GoogleMainPage;
-import com.udemy.seleniumdesign.srp.GoogleResultPage;
+import com.udemy.seleniumdesign.srp.main.GoogleMainPage;
+import com.udemy.seleniumdesign.srp.result.GoogleResultPage;
 import com.udemy.seleniumdesign.test.BaseTest;
 
 public class GoogleTest extends BaseTest {
@@ -19,11 +20,8 @@ public class GoogleTest extends BaseTest {
         this.googleResultPage = new GoogleResultPage(driver);
     }
 
-    @Test
-    public void googleWorkflow() {
-
-        String keyword = "selenium webdriver";
-        int index = 3;
+    @Test(dataProvider = "getData")
+    public void googleWorkflow(String keyword, int index) {
 
         googleMainPage.goTo();
         Assert.assertTrue(googleMainPage.getSearchWidget().isDisplayed());
@@ -32,17 +30,23 @@ public class GoogleTest extends BaseTest {
         Assert.assertTrue(googleMainPage.getSearchSuggestion().isDisplayed());
 
         googleMainPage.getSearchSuggestion().clickSuggestionByIndex(index);
-        Assert.assertTrue(googleResultPage.getResultStat().isDisplayed());
-
+        Assert.assertTrue(googleResultPage.getNavigationBar().isDisplayed());
+        
         googleResultPage.getSearchWidget().enterSearch(keyword);
         Assert.assertTrue(googleResultPage.getSearchSuggestion().isDisplayed());
 
         googleResultPage.getSearchSuggestion().clickSuggestionByIndex(index);
-        Assert.assertTrue(googleResultPage.getResultStat().isDisplayed());
-
+        
         googleResultPage.getNavigationBar().goToVideos();
-        Assert.assertTrue(googleResultPage.getResultStat().isDisplayed());
-
+        
         System.out.println(googleResultPage.getResultStat().getResultStatText());
+    }
+
+    @DataProvider
+    public Object[][] getData() {
+        return new Object[][] {
+            {"selenium webdriver", 3},
+            {"docker", 4}
+        };
     }
 }

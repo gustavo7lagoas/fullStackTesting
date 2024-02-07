@@ -1,7 +1,10 @@
-package com.udemy.seleniumdesign.srp;
+package com.udemy.seleniumdesign.srp.main;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+
+import com.udemy.seleniumdesign.srp.common.SearchSuggestion;
+import com.udemy.seleniumdesign.srp.common.SearchWidget;
 
 public class GoogleMainPage {
 
