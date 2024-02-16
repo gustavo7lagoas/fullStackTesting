@@ -1,10 +1,8 @@
-package com.udemy.seleniumdesign.strategy.main;
+package com.udemy.seleniumdesign.proxy;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.udemy.seleniumdesign.strategy.common.AbstractComponent;
 
 public class UserInformation extends AbstractComponent {
 

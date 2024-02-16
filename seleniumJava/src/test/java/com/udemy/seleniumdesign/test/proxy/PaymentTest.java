@@ -1,4 +1,4 @@
-package com.udemy.seleniumdesign.test.strategy;
+package com.udemy.seleniumdesign.test.proxy;
 
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -9,16 +9,17 @@ import org.testng.annotations.Test;
 import org.testng.collections.Maps;
 
 import com.google.common.util.concurrent.Uninterruptibles;
-import com.udemy.seleniumdesign.strategy.main.PaymentMethodFactory;
-import com.udemy.seleniumdesign.strategy.main.PaymentPage;
+import com.udemy.seleniumdesign.proxy.PaymentMethodFactory;
+import com.udemy.seleniumdesign.proxy.PaymentPage;
 import com.udemy.seleniumdesign.test.BaseTest;
 
 public class PaymentTest extends BaseTest {
 
     private PaymentPage paymentPage;
-
+    
     @BeforeTest
     public void setupPages() {
+        System.setProperty("env", "PROD");
         this.paymentPage = new PaymentPage(driver);
     }
 
@@ -53,10 +54,6 @@ public class PaymentTest extends BaseTest {
         cc.put("cCardYear", "2024");
         cc.put("cCardCVV", "67890");
 
-        Map<String,String> pp = Maps.newHashMap();
-        pp.put("paypalUsername", "gusfons@mail.com");
-        pp.put("paypalPassword", "gf@g.c@");
-
         Map<String,String> nb = Maps.newHashMap();
         nb.put("bank", "WELLS FARGO");
         nb.put("accNumber", "987654");
@@ -65,7 +62,6 @@ public class PaymentTest extends BaseTest {
 
         return new Object[][] {
             {"CC", userInfo, cc},
-            {"PP", userInfo, pp},
             {"NB", userInfo, nb}
         };
     }
